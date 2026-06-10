@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    /**
+     * @fileOverview Refined Security Policy
+     * Explicitly authorizes users to manage their own archival nodes.
+     * Aligned with paths defined in docs/backend.json.
+     */
+    match /users/{userId} {
+      // Allow profile management
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Allow media node management (Anime archives)
+      match /media/{mediaId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+      
+      // Allow cinematic node management (Movie archives)
+      match /movies/{movieId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+      
+      // Allow audit trail management
+      match /sync_logs/{logId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+  }
+}

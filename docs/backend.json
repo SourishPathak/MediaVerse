@@ -1,0 +1,82 @@
+
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user profile in the MediaVerse system.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "malTokens": {
+          "type": "object",
+          "properties": {
+            "accessToken": { "type": "string" },
+            "refreshToken": { "type": "string" },
+            "expiresAt": { "type": "number" }
+          }
+        }
+      },
+      "required": ["uid", "email"]
+    },
+    "MediaItem": {
+      "title": "MediaItem",
+      "description": "A permanent media entry stored in the vault.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "type": { "type": "string", "enum": ["anime", "movie"] },
+        "status": { "type": "string" },
+        "rating": { "type": "number" },
+        "imageUrl": { "type": "string" },
+        "largePosterUrl": { "type": "string" },
+        "synopsis": { "type": "string" },
+        "genres": { "type": "array", "items": { "type": "string" } },
+        "watchDate": { "type": "string" },
+        "platformSource": { "type": "string", "enum": ["mal", "letterboxd", "manual"] },
+        "platformId": { "type": "string" },
+        "posterStatus": { "type": "string", "enum": ["pending", "completed", "failed"] },
+        "syncStatus": { "type": "string", "enum": ["synced", "syncing", "failed"] },
+        "updatedAt": { "type": "object" }
+      },
+      "required": ["id", "title", "type"]
+    },
+    "SyncLog": {
+      "title": "SyncLog",
+      "description": "Log of a data operation.",
+      "type": "object",
+      "properties": {
+        "timestamp": { "type": "string", "format": "date-time" },
+        "mediaId": { "type": "string" },
+        "provider": { "type": "string" },
+        "action": { "type": "string" },
+        "status": { "type": "string", "enum": ["success", "error", "pending"] },
+        "message": { "type": "string" }
+      }
+    }
+  },
+  "auth": {
+    "providers": ["password"]
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile data."
+    },
+    "/users/{userId}/media/{mediaId}": {
+      "schema": "MediaItem",
+      "description": "User's anime archives."
+    },
+    "/users/{userId}/movies/{movieId}": {
+      "schema": "MediaItem",
+      "description": "User's cinematic archives."
+    },
+    "/users/{userId}/sync_logs/{logId}": {
+      "schema": "SyncLog",
+      "description": "Audit trail for imports and syncs."
+    }
+  }
+}
