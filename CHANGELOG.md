@@ -5,6 +5,15 @@ All notable changes to the **MediaVerse** project will be documented in this fil
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2024-03-30
+### Removed
+- Decommissioned the redundant GitHub Pages deployment pipeline to prevent CI/CD failures.
+- Excised deprecated scraping logic and non-functional media providers.
+
+### Changed
+- Standardized technical documentation to emphasize professional deployment targets (Vercel/Firebase App Hosting).
+- Optimized background enrichment hooks for deterministic metadata stabilization.
+
 ## [1.2.3] - 2024-03-29
 ### Changed
 - Standardized Git synchronization protocols to resolve branch divergence.

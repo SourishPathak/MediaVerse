@@ -24,7 +24,7 @@ For a fully unified Firebase experience, MediaVerse can be deployed via Firebase
 
 ## CI/CD Workflow
 
-The included GitHub Action (`.github/workflows/deploy.yml`) is configured for static previews or GitHub Pages deployment. Note that for Genkit AI functionality, a server-side runtime (like Vercel or App Hosting) is required.
+Production deployments are managed automatically by the target platform (Vercel or Firebase App Hosting) upon pushing to the `main` branch. This ensures a streamlined, server-side runtime environment necessary for AI-enhanced features.
 
 ## Security Considerations
 - **Environment Secrets**: Never commit `.env` files to version control.
