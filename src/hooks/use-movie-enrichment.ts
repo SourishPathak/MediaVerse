@@ -6,8 +6,9 @@ import { collection, query, where, limit, doc, updateDoc, serverTimestamp } from
 import { fetchMoviePosterPlaceholder } from '@/actions/movie-actions';
 
 /**
- * Handles the background stabilization of movie metadata.
- * Processes pending records to ensure the vault remains visually consistent.
+ * @fileOverview Background metadata enrichment service for cinematic archives.
+ * Processes movie records to ensure deterministic visual styling and metadata consistency
+ * across the user's private media vault.
  */
 
 export function useMovieEnrichment() {

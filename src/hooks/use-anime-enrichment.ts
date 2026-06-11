@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useEffect, useRef, useMemo, useState } from 'react';
@@ -7,8 +6,9 @@ import { collection, query, where, limit, doc, updateDoc, serverTimestamp } from
 import { fetchAnimeEnrichment } from '@/lib/jikan-service';
 
 /**
- * @fileOverview Background hook for enriching anime metadata.
- * Refactored for robust continuous processing and strict error isolation.
+ * @fileOverview Background metadata enrichment service for anime archives.
+ * Manages the transition of media nodes from a pending state to a stabilized archival state
+ * by retrieving supplemental data from the Jikan API.
  */
 
 export function useAnimeEnrichment() {
@@ -19,7 +19,6 @@ export function useAnimeEnrichment() {
 
   const pendingQuery = useMemo(() => {
     if (!db || !user?.uid) return null;
-    // Removed redundant type filter to bypass index requirement
     return query(
       collection(db, 'users', user.uid, 'media'),
       where('posterStatus', '==', 'pending'),
@@ -29,7 +28,6 @@ export function useAnimeEnrichment() {
 
   const { data: pendingItems = [] } = useCollection(pendingQuery);
 
-  // Proactive continuous polling fallback
   useEffect(() => {
     const interval = setInterval(() => {
       setRetryTrigger(prev => prev + 1);
@@ -69,17 +67,14 @@ export function useAnimeEnrichment() {
               updatedAt: serverTimestamp()
             });
 
-            // Respect Jikan rate limits (briefly pause)
             await new Promise(r => setTimeout(r, 1500));
           } catch (itemErr) {
-            console.error(`Anime enrichment failed: ${item.title}`, itemErr);
             const mediaRef = doc(db, 'users', user.uid, 'media', item.id);
             updateDoc(mediaRef, { posterStatus: 'failed' }).catch(() => {});
           }
         }
       } finally {
         isProcessing.current = false;
-        // Immediate re-trigger for next batch
         setRetryTrigger(prev => prev + 1);
       }
     }

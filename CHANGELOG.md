@@ -5,55 +5,37 @@ All notable changes to the **MediaVerse** project will be documented in this fil
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.3.0] - 2024-03-30
-### Removed
-- Decommissioned the redundant GitHub Pages deployment pipeline to prevent CI/CD failures.
-- Excised deprecated scraping logic and non-functional media providers.
+## [1.4.0] - 2024-04-02
+### Changed
+- Finalized professional documentation audit across the repository.
+- Standardized internal source code commentary to adhere to industry-standard nomenclature.
+- Optimized repository synchronization protocols for improved CI/CD reliability.
+
+## [1.3.0] - 2024-03-31
+### Added
+- Implemented high-fidelity responsive design enhancements for universal device compatibility.
+- Developed the collapsible navigation architecture for optimized mobile and tablet viewports.
+- Integrated fluid typography and dynamic grid scaling for high-resolution displays.
 
 ### Changed
-- Standardized technical documentation to emphasize professional deployment targets (Vercel/Firebase App Hosting).
-- Optimized background enrichment hooks for deterministic metadata stabilization.
-
-## [1.2.3] - 2024-03-29
-### Changed
-- Standardized Git synchronization protocols to resolve branch divergence.
-- Implemented professional repository maintenance procedures.
-- Finalized responsive design enhancements for universal device compatibility.
-
-## [1.2.2] - 2024-03-28
-### Changed
-- Standardized documentation and versioning protocols to meet professional standards.
-- Refined internal metadata stabilization logic for improved archival reliability.
-
-## [1.2.1] - 2024-03-27
-### Fixed
-- Implemented responsive design enhancements for universal device compatibility.
-- Refactored background enrichment hooks to eliminate synchronization stalls.
-- Deprecated legacy AI-driven movie genre classification in favor of deterministic metadata.
-- Professionalized project documentation and Markdown assets.
+- Decommissioned redundant GitHub Pages deployment pipelines in favor of professional hosting targets (Vercel/Firebase).
+- Refactored background enrichment hooks with advanced error isolation and proactive polling logic.
+- Deprecated legacy scraping modules to prioritize API-driven and CSV-based data ingestion.
 
 ## [1.2.0] - 2024-03-26
 ### Added
-- Reimagined "AI Wrapped" experience with a multi-card story reveal interface.
-- Implemented personalized Viewer Personas and Legendary Achievements logic.
-- Added momentum visualization using Recharts for high-fidelity data tracking.
+- Launched "AI Wrapped" experience featuring cinematic story-driven media recaps.
+- Implemented personalized Viewer Personas and Achievement systems via Google Genkit.
+- Integrated Momentum Visualization using Recharts for high-fidelity data tracking.
 
-### Changed
-- Refactored Firestore Security Rules for explicit path-based authorization.
-- Professionalized system documentation and technical Markdown assets.
-
-### Fixed
-- Resolved synchronization hang in the media enrichment engine.
-- Corrected classification logic to prevent generic "Cinema" tags.
-- Optimized Dashboard query performance by removing redundant Firestore filters.
-
-## [1.1.0] - 2024-03-25
-### Changed
-- Standardized environment variable handling for secure production deployment.
-- Optimized client-side bundles and pruned legacy modules.
+## [1.1.0] - 2024-03-24
+### Added
+- Developed MyAnimeList API synchronization engine with OAuth2 PKCE handshake.
+- Built the Letterboxd CSV archival engine for batch cinematic ingestion.
+- Established the MediaVerse visual tile system with modern glassmorphism styling.
 
 ## [1.0.0] - 2024-03-23
 ### Added
-- Initial project architecture utilizing Next.js 15 and Firebase.
-- Integrated MyAnimeList API synchronization protocol.
-- Developed the Letterboxd CSV archival engine.
+- Initialized core architecture utilizing Next.js 15 (App Router) and React 19.
+- Established secure Firebase Authentication and Cloud Firestore schema for private media vaults.
+- Configured foundational UI component library based on ShadCN and Tailwind CSS.
